@@ -3,7 +3,7 @@ import re
 def pw_detection(pw):
     if len(pw) < 8:
     	return False
-        gi
+        
     elif re.search('[0-9]', pw) is None:
         return False
     elif re.search('[A-Z]',pw) is None: 
