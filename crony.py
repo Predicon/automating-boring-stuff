@@ -4,9 +4,10 @@ link=input(str('enter the link'))
 
 if not os.path.exists(os.getcwd() + '/html_txt_files'):
     os.mkdir('html_txt_files')
-def job(link_web):
+def job():
     number=1
-    res=requests.get(link_web)
+    link=input(str('enter the link'))
+    res=requests.get(link)
     soup=bs4.BeautifulSoup(res.text,'html.parser')
     select_tag=soup.select('p')
     simple_string=''
@@ -20,9 +21,9 @@ def job(link_web):
     print('file updated successfully') 
     print(type(simple_string))
     File.close()   
-job(link)
-schedule.every(10).minutes.do(job(link))
-schedule.every().hour.do(job(link))
+
+schedule.every(10).minutes.do(job)
+schedule.every().hour.do(job)
 
 while True:
     schedule.run_pending()
